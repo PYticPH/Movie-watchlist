@@ -41,7 +41,7 @@ async function searchMovie() {
 
   const movieName = document.getElementById('user-input').value
 
-  const req = await fetch(`http://www.omdbapi.com/?apikey=82842744&s=${movieName}`)
+  const req = await fetch(`https://www.omdbapi.com/?apikey=82842744&s=${movieName}`)
   const res = await req.json()
 
   const movieId = res.Search.map(movie => movie.imdbID)
@@ -59,7 +59,7 @@ async function fetchMovieById(movieId) {
 
   for (id of movieId) {
 
-    const req = await fetch(`http://www.omdbapi.com/?apikey=82842744&i=${id}`)
+    const req = await fetch(`https://www.omdbapi.com/?apikey=82842744&i=${id}`)
     const res = await req.json()
 
     movieObj = (
