@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -5,49 +11,63 @@ body {
   min-height: 100vh;
   font-size: 1rem;
   min-width: 320px;
-  margin: 0;
 }
 
 header {
   width: 100%;
-  background: linear-gradient(45deg, blue, green);
+  background: linear-gradient(45deg, rgba(0, 43, 44, 0.7), rgba(44, 5, 54, 0.5)),
+    url('images/wallposter.jpg');
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   font-family: "Outfit", sans-serif;
-  height: 200px;
+  height: 250px;
 }
 
-div.top-header {
+
+div.top-header,
+.watchlist-header {
+  max-width: 1000px;
   width: 80%;
   display: flex;
   justify-content: space-between;
   column-gap: 3em;
   align-items: center;
-  margin: auto auto 0 auto;
   position: relative;
 }
 
+div.top-header {
+  margin: auto auto 0 auto;
+}
+
 h1 {
-  font-size: 2rem;
+  font-size: 1.3rem;
+  color: #ffffff;
+  text-shadow: 0 0 5px #000000;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
   color: #ffffff;
 }
 
 header p {
+  display: inline-block;
   font-size: 0.75rem;
   margin: 0;
-}
-
-.watchlist {
-  position: relative;
 }
 
 .watchlist-counter {
   padding: 0.4em;
   width: 10px;
-  position: absolute;
   border-radius: 50%;
   background-color: grey;
   top: -10px;
@@ -55,6 +75,7 @@ header p {
   font-size: 0.6rem;
   text-align: center;
   font-weight: 200;
+  vertical-align: super;
 }
 
 h2 {
@@ -79,14 +100,16 @@ input#user-input {
   padding: 0.5em 0.5em 0.5em 2.5em;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  border: 1px solid lightgrey;
+  border: none;
   outline: none;
   font-size: 1rem;
+  box-shadow: 0 0 2px #000000;
 }
 
 input#user-input::placeholder {
   color: grey;
   font-weight: 500;
+  font-size: 0.825rem;
 }
 
 .search-container img {
@@ -98,18 +121,19 @@ input#user-input::placeholder {
 }
 
 .search-btn {
-  padding: 0.7em 2em;
+  padding: 0 2.5em;
+  height: 100%;
   border: none;
   border-bottom-right-radius: 6px;
   border-top-right-radius: 6px;
-  border: 1px solid lightgrey;
-
+  border: none;
+  color: #1d1d1d;
+  box-shadow: 0 0 2px #000000;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: calc(100vh - 200px);
   padding: 3em 1em 10em;
@@ -118,12 +142,41 @@ main {
 .film {
   width: 30px;
   height: 22px;
+  margin: auto auto 0;
 }
 
 .start-exploring {
   color: #DFDDDD;
-  font-size: 0.6em;
-  margin: 0.2em 0 0 0;
+  font-size: 0.6rem;
+  margin: 0.2em auto auto;
+  font-weight: 700;
+}
+
+.empty-watchlist-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-watchlist-info a {
+  color: #363636;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.empty-watchlist-info img {
+  width: 15px;
+  height: 15px;
+  vertical-align: -2px;
+  margin-right: 0.2em;
+}
+
+.error-text,
+.empty-watchlist-info {
+  font-weight: 700;
+  font-size: 0.825rem;
+  margin: auto;
+  color: #dfdddd;
 }
 
 .movie-card {
@@ -211,7 +264,6 @@ main {
 
 .movie-plot {
   display: -webkit-box;
-  max-width: 320px;
   font-size: 0.875rem;
   line-height: 1.5;
   text-overflow: ellipsis;
@@ -226,6 +278,70 @@ main {
 footer {
   width: 100%;
   background-color: #151515;
-  padding: 3em 1em;
+  color: #ffffff;
+  padding: 6em 1em;
   margin: auto auto 0 auto;
+  font-size: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 767px) {
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  header p {
+    font-size: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .film {
+    width: 60px;
+    height: 44px;
+  }
+
+  .start-exploring,
+  .empty-watchlist-info,
+  .error-text {
+    font-size: 1rem;
+  }
+
+  .movie-card {
+    max-width: 800px;
+  }
+
+  .movie-runtime,
+  .movie-genre,
+  .add-watchlist,
+  .empty-watchlist-info a {
+    font-size: 1rem;
+    color: #111827;
+  }
+
+  .empty-watchlist-info img {
+    width: 20px;
+    height: 20px;
+    vertical-align: -3px;
+  }
+
+  .add-watchlist img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .movie-plot {
+    font-size: 1rem;
+  }
+
+  .movie-poster-container {
+    width: 170px;
+    height: 220px;
+  }
+
 }
